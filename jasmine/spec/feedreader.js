@@ -33,17 +33,24 @@ $(function() {
          */
         it('has url', function() {
             for(feed of allFeeds) {
-                console.log(feed.url);
-                expect(feed.url).not.toBe(undefined)
-                expect(feed.url).not.toBe('')
+           
+                expect(feed.url).not.toBe(undefined);
+                expect(feed.url).not.toBe('');
             }
-        })
+        });
 
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        it('has name', function() {
+            for(feed of allFeeds) {
+                expect(feed.name).not.toBe(undefined);
+                expect(feed.name).not.toBe('');
+            }
+        });
+        
     });
 
 
