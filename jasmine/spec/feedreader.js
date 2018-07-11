@@ -50,7 +50,7 @@ $(function() {
                 expect(feed.name).not.toBe('');
             }
         });
-        
+
     });
 
 
@@ -63,9 +63,8 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        it('is hidden', function() {
+        it('is hidden by default', function() {
             const body = document.querySelector('body');
-            console.dir(body.classList.contains('menu-hidden'));
             expect(body.classList.contains('menu-hidden')).toBe(true);
         });
 
@@ -74,7 +73,17 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-
+        it('toggles on/off', function() {
+            const menu = document.querySelector('.menu-icon-link');
+            const body = document.querySelector('body');
+            
+            menu.click();
+            expect(body.classList.contains('menu-hidden')).toBe(false);
+            menu.click();
+            expect(body.classList.contains('menu-hidden')).toBe(true);
+            
+        })
+    });
     /* TODO: Write a new test suite named "Initial Entries" */
 
         /* TODO: Write a test that ensures when the loadFeed
