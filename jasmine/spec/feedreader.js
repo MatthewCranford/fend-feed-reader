@@ -80,7 +80,7 @@ $(function() {
             menu.click();
             expect(body.classList.contains('menu-hidden')).toBe(true);
             
-    });
+        });
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
@@ -102,8 +102,37 @@ $(function() {
         });
     });
 
+    /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
+
+        const container = document.querySelector('.feed');
+        const firstFeed = [];
+
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        beforeEach(function(done) {
+
+            // Load first feed
+            loadFeed(0);
+            
+            // Store values of first feed
+            Array.from(container.children).forEach(content => {
+                firstFeed.push(content.innerText);
+            });
+
+            // Load second feed
+            loadFeed(1, done);
+        });
+        
+        it('content changes', function() {
+
+            // Compare first feed against new feed content
+            Array.from(container.children).forEach( (content, index) => {
+                expect(content.innerText !== firstFeed[index]).toBe(true);
+            });
+        });
+    });
+    
 }());
