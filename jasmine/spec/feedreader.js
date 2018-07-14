@@ -1,3 +1,4 @@
+
 /* feedreader.js
  *
  * This is the spec file that Jasmine will read and contains
@@ -9,6 +10,8 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
+    "use strict";
+
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
@@ -21,31 +24,29 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
-        it('are defined', function() {
+        it('valid', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
-
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
         it('has url', function() {
-            for(feed of allFeeds) {
+            for(let feed of allFeeds) {
            
                 expect(feed.url).not.toBe(undefined);
                 expect(feed.url).not.toBe('');
             }
         });
 
-
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
         it('has name', function() {
-            for(feed of allFeeds) {
+            for(let feed of allFeeds) {
                 expect(feed.name).not.toBe(undefined);
                 expect(feed.name).not.toBe('');
             }
@@ -61,7 +62,7 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        it('is hidden by default', function() {
+        it('hidden by default', function() {
             const body = document.querySelector('body');
             expect(body.classList.contains('menu-hidden')).toBe(true);
         });
@@ -98,7 +99,7 @@ $(function() {
 
         it('loads feed', function() {
             const container = document.querySelector('.feed');
-            expect(container.children.length >= 1).toBe(true);
+            expect(container.children.length > 0).toBe(true);
         });
     });
 
